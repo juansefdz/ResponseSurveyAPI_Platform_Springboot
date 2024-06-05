@@ -77,14 +77,7 @@ public class QuestionsService implements IQuestionsService {
         return this.entityToResponse(this.questionsRepository.save(question));
     }
 
-    @Override
-    public QuestionsResponse updateQuestionText(String newText, Integer id) {
-        Question question = this.find(id);
-        if (newText != null) question.setText(newText);
-
-        return this.entityToResponse(this.questionsRepository.save(question));
-    }
-
+   
     @Override
     public void delete(Integer id) {
         this.questionsRepository.delete(this.find(id));
@@ -112,6 +105,13 @@ public class QuestionsService implements IQuestionsService {
         OptionQuestion option = new OptionQuestion();
         BeanUtils.copyProperties(request, option);
         return option;
+    }
+    @Override
+    public QuestionsResponse updateQuestionText(String newText, Integer id) {
+        Question question = this.find(id);
+        if (newText != null) question.setText(newText);
+
+        return this.entityToResponse(this.questionsRepository.save(question));
     }
 
     private List<OptionsQResponseInQuestion> optionsQuestionsResponseInQuestions(List<OptionQuestion> optionQuestions) {
