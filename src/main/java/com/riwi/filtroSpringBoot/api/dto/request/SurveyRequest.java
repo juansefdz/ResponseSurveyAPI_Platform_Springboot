@@ -17,9 +17,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SurveyRequest {
-    @NotNull(
-        message = "The survey ID is required") // Validation
-    private int surveyId;
+    
     @Schema(
         description = "Name of the user", 
         example = "john_doe")                       // SWAGGER

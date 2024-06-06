@@ -11,9 +11,9 @@ import org.springframework.stereotype.Service;
 import com.riwi.filtroSpringBoot.api.dto.request.SurveyRequest;
 import com.riwi.filtroSpringBoot.api.dto.response.SurveyResponse.SurveyResponse;
 import com.riwi.filtroSpringBoot.domain.entities.Survey;
-
+import com.riwi.filtroSpringBoot.domain.entities.UserEntity;
 import com.riwi.filtroSpringBoot.domain.repositories.SurveyRepository;
-
+import com.riwi.filtroSpringBoot.domain.repositories.UserRepository;
 import com.riwi.filtroSpringBoot.infraestructure.abstract_services.ISurveyService;
 import com.riwi.filtroSpringBoot.infraestructure.helpers.EmailHelper;
 import com.riwi.filtroSpringBoot.util.enums.SortType;
@@ -28,12 +28,18 @@ public class SurveyService implements ISurveyService{
      
     @Autowired
     private final SurveyRepository surveyRepository;
+    private final UserRepository userRepository;
     private final EmailHelper emailHelper;
     
 
     private Survey requestToEntity(SurveyRequest request) {
         Survey survey = new Survey();
         BeanUtils.copyProperties(request, survey);
+        if (request.getUserid() != 0) {
+            UserEntity user = userRepository.findById(request.getUserid())
+                    .orElseThrow(() -> new IllegalArgumentException("User not found with id: " + request.getUserid()));
+            survey.setUser(user);
+        }
         return survey;
     }
 

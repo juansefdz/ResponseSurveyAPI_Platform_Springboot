@@ -41,7 +41,7 @@ public class Question {
     @JoinColumn(name = "fk_survey_id", referencedColumnName = "survey_id")
     private Survey survey;
 
-    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, orphanRemoval = false)
     @Builder.Default
     private List <OptionQuestion> optionQuestions = new ArrayList<>();
 }

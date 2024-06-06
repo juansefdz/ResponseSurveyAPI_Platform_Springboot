@@ -35,7 +35,7 @@ public class UserEntity {
     @Column(name = "active", nullable = false)
     private boolean active;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = false)
     @Builder.Default
     private List <Survey> surveys = new ArrayList<>();   
 }

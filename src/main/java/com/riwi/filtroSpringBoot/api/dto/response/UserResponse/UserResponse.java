@@ -17,7 +17,7 @@ public class UserResponse {
 
     
     @Schema(description = "ID of the user")         // SWAGGER
-    private long idUser;
+    private int idUser;
     @Schema(description = "name of the user")       // SWAGGER
     private String name;
     @Schema(description = "Email of the user")      // SWAGGER

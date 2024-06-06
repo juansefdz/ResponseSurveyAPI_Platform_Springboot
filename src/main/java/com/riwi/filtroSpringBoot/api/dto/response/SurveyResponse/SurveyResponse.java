@@ -14,6 +14,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SurveyResponse {
+    @Schema(description = "ID survey ") // SWAGGER
+    private int idSurvey;
     @Schema(description = "title of survey ") // SWAGGER
     private String title;
     @Schema(description = "description of survey") // SWAGGER

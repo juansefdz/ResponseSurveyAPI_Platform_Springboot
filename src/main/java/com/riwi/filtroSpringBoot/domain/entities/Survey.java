@@ -46,7 +46,7 @@ public class Survey {
     private UserEntity user;
 
 
-    @OneToMany(mappedBy = "survey", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "survey", cascade = CascadeType.ALL, orphanRemoval = false)
     @Builder.Default
     private List <Question> questions = new ArrayList<>(); 
 }
