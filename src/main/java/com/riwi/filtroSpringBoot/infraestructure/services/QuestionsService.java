@@ -18,8 +18,8 @@ import com.riwi.filtroSpringBoot.domain.entities.Question;
 import com.riwi.filtroSpringBoot.domain.repositories.QuestionsRepository;
 import com.riwi.filtroSpringBoot.infraestructure.abstract_services.IQuestionsService;
 import com.riwi.filtroSpringBoot.util.enums.SortType;
+import com.riwi.filtroSpringBoot.util.exceptions.ResourceNotFoundException;
 
-import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 
 @Service
@@ -38,7 +38,7 @@ public class QuestionsService implements IQuestionsService {
 
     private Question find(Integer id) {
         return questionsRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Question not found with id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Question not found with id: " + id));
     }
 
     @Override

@@ -17,8 +17,9 @@ import com.riwi.filtroSpringBoot.domain.repositories.UserRepository;
 import com.riwi.filtroSpringBoot.infraestructure.abstract_services.ISurveyService;
 import com.riwi.filtroSpringBoot.infraestructure.helpers.EmailHelper;
 import com.riwi.filtroSpringBoot.util.enums.SortType;
+import com.riwi.filtroSpringBoot.util.exceptions.ResourceNotFoundException;
 
-import jakarta.persistence.EntityNotFoundException;
+
 import lombok.AllArgsConstructor;
 
 @Service
@@ -53,7 +54,7 @@ public class SurveyService implements ISurveyService{
 
     private Survey find(Integer id) {
         return surveyRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Survey not found with id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Survey not found with id: " + id));
     }
 
     @Override

@@ -17,8 +17,8 @@ import com.riwi.filtroSpringBoot.domain.entities.UserEntity;
 import com.riwi.filtroSpringBoot.domain.repositories.UserRepository;
 import com.riwi.filtroSpringBoot.infraestructure.abstract_services.IUserEntityService;
 import com.riwi.filtroSpringBoot.util.enums.SortType;
+import com.riwi.filtroSpringBoot.util.exceptions.ResourceNotFoundException;
 
-import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 
 @Service
@@ -43,7 +43,7 @@ public class UserEntityService implements IUserEntityService{
 
     private UserEntity find(Integer id) {
         return userRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("User not found with id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + id));
     }
 
     @Override
